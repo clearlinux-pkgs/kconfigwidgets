@@ -1,0 +1,15 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+buildreq-kde
+kauth-dev
+kcoreaddons-dev
+kcodecs-dev
+kconfig
+kconfig-dev
+kdoctools-dev
+kguiaddons-dev
+ki18n-dev
+kwidgetsaddons-dev
+libxml2
+libxslt
+docbook-xml
