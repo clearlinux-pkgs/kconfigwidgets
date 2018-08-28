@@ -6,7 +6,7 @@
 #
 Name     : kconfigwidgets
 Version  : 5.49.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/frameworks/5.49/kconfigwidgets-5.49.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.49/kconfigwidgets-5.49.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.49/kconfigwidgets-5.49.0.tar.xz.sig
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534096934
+export SOURCE_DATE_EPOCH=1535426732
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -123,7 +123,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1534096934
+export SOURCE_DATE_EPOCH=1535426732
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kconfigwidgets
 cp COPYING %{buildroot}/usr/share/doc/kconfigwidgets/COPYING
@@ -241,6 +241,7 @@ popd
 /usr/share/locale/zh_CN/kf5_entry.desktop
 /usr/share/locale/zh_HK/kf5_entry.desktop
 /usr/share/locale/zh_TW/kf5_entry.desktop
+/usr/share/xdg/kconfigwidgets.categories
 
 %files dev
 %defattr(-,root,root,-)
