@@ -5,20 +5,20 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kconfigwidgets
-Version  : 5.50.0
-Release  : 5
-URL      : https://download.kde.org/stable/frameworks/5.50/kconfigwidgets-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/kconfigwidgets-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/kconfigwidgets-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 6
+URL      : https://download.kde.org/stable/frameworks/5.51/kconfigwidgets-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/kconfigwidgets-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/kconfigwidgets-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: kconfigwidgets-bin
-Requires: kconfigwidgets-lib
-Requires: kconfigwidgets-license
-Requires: kconfigwidgets-locales
-Requires: kconfigwidgets-data
-Requires: kconfigwidgets-man
+Requires: kconfigwidgets-bin = %{version}-%{release}
+Requires: kconfigwidgets-data = %{version}-%{release}
+Requires: kconfigwidgets-lib = %{version}-%{release}
+Requires: kconfigwidgets-license = %{version}-%{release}
+Requires: kconfigwidgets-locales = %{version}-%{release}
+Requires: kconfigwidgets-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
@@ -33,7 +33,7 @@ BuildRequires : ki18n-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : libxml2
 BuildRequires : libxslt
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 # KConfigWidgets
@@ -45,9 +45,9 @@ well as a set of widgets which uses KConfig to store their settings.
 %package bin
 Summary: bin components for the kconfigwidgets package.
 Group: Binaries
-Requires: kconfigwidgets-data
-Requires: kconfigwidgets-license
-Requires: kconfigwidgets-man
+Requires: kconfigwidgets-data = %{version}-%{release}
+Requires: kconfigwidgets-license = %{version}-%{release}
+Requires: kconfigwidgets-man = %{version}-%{release}
 
 %description bin
 bin components for the kconfigwidgets package.
@@ -64,10 +64,10 @@ data components for the kconfigwidgets package.
 %package dev
 Summary: dev components for the kconfigwidgets package.
 Group: Development
-Requires: kconfigwidgets-lib
-Requires: kconfigwidgets-bin
-Requires: kconfigwidgets-data
-Provides: kconfigwidgets-devel
+Requires: kconfigwidgets-lib = %{version}-%{release}
+Requires: kconfigwidgets-bin = %{version}-%{release}
+Requires: kconfigwidgets-data = %{version}-%{release}
+Provides: kconfigwidgets-devel = %{version}-%{release}
 
 %description dev
 dev components for the kconfigwidgets package.
@@ -76,8 +76,8 @@ dev components for the kconfigwidgets package.
 %package lib
 Summary: lib components for the kconfigwidgets package.
 Group: Libraries
-Requires: kconfigwidgets-data
-Requires: kconfigwidgets-license
+Requires: kconfigwidgets-data = %{version}-%{release}
+Requires: kconfigwidgets-license = %{version}-%{release}
 
 %description lib
 lib components for the kconfigwidgets package.
@@ -108,26 +108,26 @@ man components for the kconfigwidgets package.
 
 
 %prep
-%setup -q -n kconfigwidgets-5.50.0
+%setup -q -n kconfigwidgets-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536431174
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539624710
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536431174
+export SOURCE_DATE_EPOCH=1539624710
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kconfigwidgets
-cp COPYING %{buildroot}/usr/share/doc/kconfigwidgets/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/kconfigwidgets/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
+cp COPYING %{buildroot}/usr/share/package-licenses/kconfigwidgets/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kconfigwidgets/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -286,15 +286,15 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5ConfigWidgets.so.5
-/usr/lib64/libKF5ConfigWidgets.so.5.50.0
+/usr/lib64/libKF5ConfigWidgets.so.5.51.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kconfigwidgets/COPYING
-/usr/share/doc/kconfigwidgets/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kconfigwidgets/COPYING
+/usr/share/package-licenses/kconfigwidgets/COPYING.LIB
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/preparetips5.1
 /usr/share/man/de/man1/preparetips5.1
 /usr/share/man/es/man1/preparetips5.1
