@@ -6,7 +6,7 @@
 #
 Name     : kconfigwidgets
 Version  : 5.52.0
-Release  : 8
+Release  : 9
 URL      : https://download.kde.org/stable/frameworks/5.52/kconfigwidgets-5.52.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.52/kconfigwidgets-5.52.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.52/kconfigwidgets-5.52.0.tar.xz.sig
@@ -41,14 +41,6 @@ Widgets for configuration dialogs
 ## Introduction
 KConfigWidgets provides easy-to-use classes to create configuration dialogs, as
 well as a set of widgets which uses KConfig to store their settings.
-
-%package abi
-Summary: abi components for the kconfigwidgets package.
-Group: Default
-
-%description abi
-abi components for the kconfigwidgets package.
-
 
 %package bin
 Summary: bin components for the kconfigwidgets package.
@@ -123,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541871494
+export SOURCE_DATE_EPOCH=1542739381
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -131,7 +123,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541871494
+export SOURCE_DATE_EPOCH=1542739381
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp COPYING %{buildroot}/usr/share/package-licenses/kconfigwidgets/COPYING
@@ -143,10 +135,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libKF5ConfigWidgets.so.5.52.0.abi
 
 %files bin
 %defattr(-,root,root,-)
