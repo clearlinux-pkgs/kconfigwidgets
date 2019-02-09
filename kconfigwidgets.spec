@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kconfigwidgets
-Version  : 5.54.0
-Release  : 12
-URL      : https://download.kde.org/stable/frameworks/5.54/kconfigwidgets-5.54.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.54/kconfigwidgets-5.54.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.54/kconfigwidgets-5.54.0.tar.xz.sig
-Summary  : Widgets for KConfig
+Version  : 5.55.0
+Release  : 13
+URL      : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: kconfigwidgets-bin = %{version}-%{release}
@@ -19,9 +19,11 @@ Requires: kconfigwidgets-lib = %{version}-%{release}
 Requires: kconfigwidgets-license = %{version}-%{release}
 Requires: kconfigwidgets-locales = %{version}-%{release}
 Requires: kconfigwidgets-man = %{version}-%{release}
+BuildRequires : appstream-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
+BuildRequires : kauth
 BuildRequires : kauth-dev
 BuildRequires : kcodecs-dev
 BuildRequires : kconfig
@@ -108,22 +110,22 @@ man components for the kconfigwidgets package.
 
 
 %prep
-%setup -q -n kconfigwidgets-5.54.0
+%setup -q -n kconfigwidgets-5.55.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547325345
+export SOURCE_DATE_EPOCH=1549755097
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547325345
+export SOURCE_DATE_EPOCH=1549755097
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp COPYING %{buildroot}/usr/share/package-licenses/kconfigwidgets/COPYING
@@ -253,6 +255,7 @@ popd
 /usr/include/KF5/KConfigWidgets/KConfigViewStateSaver
 /usr/include/KF5/KConfigWidgets/KHelpClient
 /usr/include/KF5/KConfigWidgets/KLanguageButton
+/usr/include/KF5/KConfigWidgets/KLanguageName
 /usr/include/KF5/KConfigWidgets/KPasteTextAction
 /usr/include/KF5/KConfigWidgets/KRecentFilesAction
 /usr/include/KF5/KConfigWidgets/KStandardAction
@@ -268,6 +271,7 @@ popd
 /usr/include/KF5/KConfigWidgets/kconfigwidgets_export.h
 /usr/include/KF5/KConfigWidgets/khelpclient.h
 /usr/include/KF5/KConfigWidgets/klanguagebutton.h
+/usr/include/KF5/KConfigWidgets/klanguagename.h
 /usr/include/KF5/KConfigWidgets/kpastetextaction.h
 /usr/include/KF5/KConfigWidgets/krecentfilesaction.h
 /usr/include/KF5/KConfigWidgets/kstandardaction.h
@@ -285,7 +289,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5ConfigWidgets.so.5
-/usr/lib64/libKF5ConfigWidgets.so.5.54.0
+/usr/lib64/libKF5ConfigWidgets.so.5.55.0
 
 %files license
 %defattr(0644,root,root,0755)
