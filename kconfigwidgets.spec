@@ -6,11 +6,11 @@
 #
 Name     : kconfigwidgets
 Version  : 5.55.0
-Release  : 13
+Release  : 14
 URL      : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.55/kconfigwidgets-5.55.0.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : Widgets for KConfig
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: kconfigwidgets-bin = %{version}-%{release}
@@ -75,6 +75,14 @@ Provides: kconfigwidgets-devel = %{version}-%{release}
 dev components for the kconfigwidgets package.
 
 
+%package extras
+Summary: extras components for the kconfigwidgets package.
+Group: Default
+
+%description extras
+extras components for the kconfigwidgets package.
+
+
 %package lib
 Summary: lib components for the kconfigwidgets package.
 Group: Libraries
@@ -117,15 +125,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549755097
+export SOURCE_DATE_EPOCH=1550462959
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549755097
+export SOURCE_DATE_EPOCH=1550462959
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp COPYING %{buildroot}/usr/share/package-licenses/kconfigwidgets/COPYING
@@ -140,7 +148,7 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
-/usr/bin/preparetips5
+%exclude /usr/bin/preparetips5
 
 %files data
 %defattr(-,root,root,-)
@@ -285,6 +293,10 @@ popd
 /usr/lib64/cmake/KF5ConfigWidgets/KF5ConfigWidgetsTargets.cmake
 /usr/lib64/libKF5ConfigWidgets.so
 /usr/lib64/qt5/mkspecs/modules/qt_KConfigWidgets.pri
+
+%files extras
+%defattr(-,root,root,-)
+/usr/bin/preparetips5
 
 %files lib
 %defattr(-,root,root,-)
