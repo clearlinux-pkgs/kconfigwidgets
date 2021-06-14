@@ -10,6 +10,15 @@ libKF5ConfigWidgets.so.5:_ZN10KTipDialogC2EP12KTipDatabaseP7QWidget
 libKF5ConfigWidgets.so.5:_ZN10KTipDialogD0Ev
 libKF5ConfigWidgets.so.5:_ZN10KTipDialogD1Ev
 libKF5ConfigWidgets.so.5:_ZN10KTipDialogD2Ev
+libKF5ConfigWidgets.so.5:_ZN11KCommandBar10setActionsERK7QVectorINS_11ActionGroupEE
+libKF5ConfigWidgets.so.5:_ZN11KCommandBar11eventFilterEP7QObjectP6QEvent
+libKF5ConfigWidgets.so.5:_ZN11KCommandBar11qt_metacallEN11QMetaObject4CallEiPPv
+libKF5ConfigWidgets.so.5:_ZN11KCommandBar11qt_metacastEPKc
+libKF5ConfigWidgets.so.5:_ZN11KCommandBarC1EP7QWidget
+libKF5ConfigWidgets.so.5:_ZN11KCommandBarC2EP7QWidget
+libKF5ConfigWidgets.so.5:_ZN11KCommandBarD0Ev
+libKF5ConfigWidgets.so.5:_ZN11KCommandBarD1Ev
+libKF5ConfigWidgets.so.5:_ZN11KCommandBarD2Ev
 libKF5ConfigWidgets.so.5:_ZN11KHelpClient10invokeHelpERK7QStringS2_
 libKF5ConfigWidgets.so.5:_ZN12KCodecAction11qt_metacallEN11QMetaObject4CallEiPPv
 libKF5ConfigWidgets.so.5:_ZN12KCodecAction11qt_metacastEPKc
@@ -328,6 +337,7 @@ libKF5ConfigWidgets.so.5:_ZN8KCModuleD0Ev
 libKF5ConfigWidgets.so.5:_ZN8KCModuleD1Ev
 libKF5ConfigWidgets.so.5:_ZN8KCModuleD2Ev
 libKF5ConfigWidgets.so.5:_ZNK10KTipDialog10metaObjectEv
+libKF5ConfigWidgets.so.5:_ZNK11KCommandBar10metaObjectEv
 libKF5ConfigWidgets.so.5:_ZNK12KCodecAction10metaObjectEv
 libKF5ConfigWidgets.so.5:_ZNK12KCodecAction10mibForNameERK7QStringPb
 libKF5ConfigWidgets.so.5:_ZNK12KCodecAction11codecForMibEi
@@ -383,6 +393,8 @@ libKF5ConfigWidgets.so.5:_ZNK8KCModule9aboutDataEv
 libKF5ConfigWidgets.so.5:_ZNK8KCModule9quickHelpEv
 libKF5ConfigWidgets.so.5:_ZThn16_N10KTipDialogD0Ev
 libKF5ConfigWidgets.so.5:_ZThn16_N10KTipDialogD1Ev
+libKF5ConfigWidgets.so.5:_ZThn16_N11KCommandBarD0Ev
+libKF5ConfigWidgets.so.5:_ZThn16_N11KCommandBarD1Ev
 libKF5ConfigWidgets.so.5:_ZThn16_N13KConfigDialogD0Ev
 libKF5ConfigWidgets.so.5:_ZThn16_N13KConfigDialogD1Ev
 libKF5ConfigWidgets.so.5:_ZThn16_N15KLanguageButtonD0Ev
