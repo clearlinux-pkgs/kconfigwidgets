@@ -6,7 +6,7 @@
 #
 Name     : kconfigwidgets
 Version  : 5.91.0
-Release  : 51
+Release  : 52
 URL      : https://download.kde.org/stable/frameworks/5.90/kconfigwidgets-5.91.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.90/kconfigwidgets-5.91.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.90/kconfigwidgets-5.91.0.tar.xz.sig
@@ -35,6 +35,7 @@ BuildRequires : ki18n-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : libxml2
 BuildRequires : libxslt
+Patch1: version.patch
 
 %description
 # KConfigWidgets
@@ -108,13 +109,14 @@ man components for the kconfigwidgets package.
 %prep
 %setup -q -n kconfigwidgets-5.91.0
 cd %{_builddir}/kconfigwidgets-5.91.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644855324
+export SOURCE_DATE_EPOCH=1644857278
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -130,7 +132,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1644855324
+export SOURCE_DATE_EPOCH=1644857278
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp %{_builddir}/kconfigwidgets-5.91.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kconfigwidgets/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
@@ -314,7 +316,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5ConfigWidgets.so.5
-/usr/lib64/libKF5ConfigWidgets.so.5.90.0
+/usr/lib64/libKF5ConfigWidgets.so.5.91.0
 /usr/lib64/qt5/plugins/designer/kconfigwidgets5widgets.so
 
 %files license
