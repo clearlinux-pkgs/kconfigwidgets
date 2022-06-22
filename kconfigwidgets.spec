@@ -6,7 +6,7 @@
 #
 Name     : kconfigwidgets
 Version  : 5.95.0
-Release  : 56
+Release  : 57
 URL      : https://download.kde.org/stable/frameworks/5.95/kconfigwidgets-5.95.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.95/kconfigwidgets-5.95.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.95/kconfigwidgets-5.95.0.tar.xz.sig
@@ -17,6 +17,7 @@ Requires: kconfigwidgets-data = %{version}-%{release}
 Requires: kconfigwidgets-lib = %{version}-%{release}
 Requires: kconfigwidgets-license = %{version}-%{release}
 Requires: kconfigwidgets-locales = %{version}-%{release}
+Requires: kconfigwidgets-man = %{version}-%{release}
 BuildRequires : appstream-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -97,16 +98,28 @@ Group: Default
 locales components for the kconfigwidgets package.
 
 
+%package man
+Summary: man components for the kconfigwidgets package.
+Group: Default
+
+%description man
+man components for the kconfigwidgets package.
+
+
 %prep
 %setup -q -n kconfigwidgets-5.95.0
 cd %{_builddir}/kconfigwidgets-5.95.0
 
 %build
+## build_prepend content
+# Make sure the package only builds if kdoctools has been updated first
+sed -i -r -e 's,(KF.?DocTools \$\{KF.?_DEP_VERSION\})(.*\))$,\1 REQUIRED \2,' CMakeLists.txt
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655139919
+export SOURCE_DATE_EPOCH=1655917706
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,7 +135,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655139919
+export SOURCE_DATE_EPOCH=1655917706
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp %{_builddir}/kconfigwidgets-5.95.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kconfigwidgets/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
@@ -322,6 +335,21 @@ popd
 /usr/share/package-licenses/kconfigwidgets/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 /usr/share/package-licenses/kconfigwidgets/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/kconfigwidgets/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/ca/man1/preparetips5.1
+/usr/share/man/de/man1/preparetips5.1
+/usr/share/man/es/man1/preparetips5.1
+/usr/share/man/fr/man1/preparetips5.1
+/usr/share/man/it/man1/preparetips5.1
+/usr/share/man/man1/preparetips5.1
+/usr/share/man/nl/man1/preparetips5.1
+/usr/share/man/pt/man1/preparetips5.1
+/usr/share/man/pt_BR/man1/preparetips5.1
+/usr/share/man/ru/man1/preparetips5.1
+/usr/share/man/sv/man1/preparetips5.1
+/usr/share/man/uk/man1/preparetips5.1
 
 %files locales -f kconfigwidgets5.lang
 %defattr(-,root,root,-)
