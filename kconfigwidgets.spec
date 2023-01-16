@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kconfigwidgets
-Version  : 5.101.0
-Release  : 64
-URL      : https://download.kde.org/stable/frameworks/5.101/kconfigwidgets-5.101.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.101/kconfigwidgets-5.101.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.101/kconfigwidgets-5.101.0.tar.xz.sig
+Version  : 5.102.0
+Release  : 65
+URL      : https://download.kde.org/stable/frameworks/5.102/kconfigwidgets-5.102.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.102/kconfigwidgets-5.102.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.102/kconfigwidgets-5.102.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -36,6 +36,9 @@ BuildRequires : kwidgetsaddons-dev
 BuildRequires : libxml2
 BuildRequires : libxslt
 BuildRequires : qt6base-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # KConfigWidgets
@@ -107,8 +110,8 @@ man components for the kconfigwidgets package.
 
 
 %prep
-%setup -q -n kconfigwidgets-5.101.0
-cd %{_builddir}/kconfigwidgets-5.101.0
+%setup -q -n kconfigwidgets-5.102.0
+cd %{_builddir}/kconfigwidgets-5.102.0
 
 %build
 ## build_prepend content
@@ -119,23 +122,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1671062154
+export SOURCE_DATE_EPOCH=1673900058
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1671062154
+export SOURCE_DATE_EPOCH=1673900058
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kconfigwidgets
 cp %{_builddir}/kconfigwidgets-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kconfigwidgets/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -158,7 +161,110 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/locale/af/kf5_entry.desktop
+/usr/share/locale/ar/kf5_entry.desktop
+/usr/share/locale/as/kf5_entry.desktop
+/usr/share/locale/az/kf5_entry.desktop
+/usr/share/locale/be/kf5_entry.desktop
+/usr/share/locale/be@latin/kf5_entry.desktop
+/usr/share/locale/bg/kf5_entry.desktop
+/usr/share/locale/bn/kf5_entry.desktop
+/usr/share/locale/bn_IN/kf5_entry.desktop
+/usr/share/locale/br/kf5_entry.desktop
+/usr/share/locale/bs/kf5_entry.desktop
+/usr/share/locale/ca/kf5_entry.desktop
+/usr/share/locale/ca@valencia/kf5_entry.desktop
+/usr/share/locale/crh/kf5_entry.desktop
+/usr/share/locale/cs/kf5_entry.desktop
+/usr/share/locale/csb/kf5_entry.desktop
+/usr/share/locale/cy/kf5_entry.desktop
+/usr/share/locale/da/kf5_entry.desktop
+/usr/share/locale/de/kf5_entry.desktop
+/usr/share/locale/el/kf5_entry.desktop
+/usr/share/locale/en_GB/kf5_entry.desktop
 /usr/share/locale/en_US/kf5_entry.desktop
+/usr/share/locale/eo/kf5_entry.desktop
+/usr/share/locale/es/kf5_entry.desktop
+/usr/share/locale/et/kf5_entry.desktop
+/usr/share/locale/eu/kf5_entry.desktop
+/usr/share/locale/fa/kf5_entry.desktop
+/usr/share/locale/fi/kf5_entry.desktop
+/usr/share/locale/fr/kf5_entry.desktop
+/usr/share/locale/fy/kf5_entry.desktop
+/usr/share/locale/ga/kf5_entry.desktop
+/usr/share/locale/gd/kf5_entry.desktop
+/usr/share/locale/gl/kf5_entry.desktop
+/usr/share/locale/gu/kf5_entry.desktop
+/usr/share/locale/ha/kf5_entry.desktop
+/usr/share/locale/he/kf5_entry.desktop
+/usr/share/locale/hi/kf5_entry.desktop
+/usr/share/locale/hne/kf5_entry.desktop
+/usr/share/locale/hr/kf5_entry.desktop
+/usr/share/locale/hsb/kf5_entry.desktop
+/usr/share/locale/hu/kf5_entry.desktop
+/usr/share/locale/hy/kf5_entry.desktop
+/usr/share/locale/ia/kf5_entry.desktop
+/usr/share/locale/id/kf5_entry.desktop
+/usr/share/locale/ie/kf5_entry.desktop
+/usr/share/locale/is/kf5_entry.desktop
+/usr/share/locale/it/kf5_entry.desktop
+/usr/share/locale/ja/kf5_entry.desktop
+/usr/share/locale/ka/kf5_entry.desktop
+/usr/share/locale/kk/kf5_entry.desktop
+/usr/share/locale/km/kf5_entry.desktop
+/usr/share/locale/kn/kf5_entry.desktop
+/usr/share/locale/ko/kf5_entry.desktop
+/usr/share/locale/ku/kf5_entry.desktop
+/usr/share/locale/lb/kf5_entry.desktop
+/usr/share/locale/lt/kf5_entry.desktop
+/usr/share/locale/lv/kf5_entry.desktop
+/usr/share/locale/mai/kf5_entry.desktop
+/usr/share/locale/mk/kf5_entry.desktop
+/usr/share/locale/ml/kf5_entry.desktop
+/usr/share/locale/mr/kf5_entry.desktop
+/usr/share/locale/ms/kf5_entry.desktop
+/usr/share/locale/my/kf5_entry.desktop
+/usr/share/locale/nb/kf5_entry.desktop
+/usr/share/locale/nds/kf5_entry.desktop
+/usr/share/locale/ne/kf5_entry.desktop
+/usr/share/locale/nl/kf5_entry.desktop
+/usr/share/locale/nn/kf5_entry.desktop
+/usr/share/locale/oc/kf5_entry.desktop
+/usr/share/locale/or/kf5_entry.desktop
+/usr/share/locale/pa/kf5_entry.desktop
+/usr/share/locale/pl/kf5_entry.desktop
+/usr/share/locale/ps/kf5_entry.desktop
+/usr/share/locale/pt/kf5_entry.desktop
+/usr/share/locale/pt_BR/kf5_entry.desktop
+/usr/share/locale/ro/kf5_entry.desktop
+/usr/share/locale/ru/kf5_entry.desktop
+/usr/share/locale/se/kf5_entry.desktop
+/usr/share/locale/si/kf5_entry.desktop
+/usr/share/locale/sk/kf5_entry.desktop
+/usr/share/locale/sl/kf5_entry.desktop
+/usr/share/locale/sq/kf5_entry.desktop
+/usr/share/locale/sr/kf5_entry.desktop
+/usr/share/locale/sr@ijekavian/kf5_entry.desktop
+/usr/share/locale/sr@ijekavianlatin/kf5_entry.desktop
+/usr/share/locale/sr@latin/kf5_entry.desktop
+/usr/share/locale/sv/kf5_entry.desktop
+/usr/share/locale/ta/kf5_entry.desktop
+/usr/share/locale/te/kf5_entry.desktop
+/usr/share/locale/tg/kf5_entry.desktop
+/usr/share/locale/th/kf5_entry.desktop
+/usr/share/locale/tok/kf5_entry.desktop
+/usr/share/locale/tr/kf5_entry.desktop
+/usr/share/locale/tt/kf5_entry.desktop
+/usr/share/locale/ug/kf5_entry.desktop
+/usr/share/locale/uk/kf5_entry.desktop
+/usr/share/locale/uz/kf5_entry.desktop
+/usr/share/locale/uz@cyrillic/kf5_entry.desktop
+/usr/share/locale/vi/kf5_entry.desktop
+/usr/share/locale/wa/kf5_entry.desktop
+/usr/share/locale/xh/kf5_entry.desktop
+/usr/share/locale/zh_CN/kf5_entry.desktop
+/usr/share/locale/zh_HK/kf5_entry.desktop
+/usr/share/locale/zh_TW/kf5_entry.desktop
 /usr/share/qlogging-categories5/kconfigwidgets.categories
 /usr/share/qlogging-categories5/kconfigwidgets.renamecategories
 
@@ -219,7 +325,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5ConfigWidgets.so.5
-/usr/lib64/libKF5ConfigWidgets.so.5.101.0
+/usr/lib64/libKF5ConfigWidgets.so.5.102.0
 /usr/lib64/qt5/plugins/designer/kconfigwidgets5widgets.so
 
 %files license
