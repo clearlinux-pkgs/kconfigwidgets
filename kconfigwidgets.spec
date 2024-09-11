@@ -9,7 +9,7 @@
 #
 Name     : kconfigwidgets
 Version  : 6.5.0
-Release  : 94
+Release  : 95
 URL      : https://download.kde.org/stable/frameworks/6.5/kconfigwidgets-6.5.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/6.5/kconfigwidgets-6.5.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/6.5/kconfigwidgets-6.5.0.tar.xz.sig
